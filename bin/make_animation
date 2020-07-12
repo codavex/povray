@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PROJECT=`basename $PWD`
+
+cat *.png | ffmpeg -framerate $1 -f image2pipe -i - -c:v copy ${PROJECT}.mp4
