@@ -1,5 +1,5 @@
 // File: demo.pov
-// Desc: falling.inc demo
+// Desc: grabity.inc demo
 
 #version 3.7;
 
@@ -7,7 +7,7 @@
 #include "colors.inc"	  // Standard Color definitions
 
 #include "../environment.inc"
-#include "falling.inc"
+#include "gravity.inc"
 
 camera {
 	location  <0.0, 0.5, -3.0>
@@ -22,7 +22,7 @@ camera {
 
 #declare shift = -3;
 #while (shift < 3)
-  object { falling_trajectory(ball, 1.8, 0) translate <shift, 0, 0> }
+  object { gravity_trajectory(ball, 1.8, 0) translate <shift, 0, 0> }
   #declare shift = shift + 0.1;
 #end
 
