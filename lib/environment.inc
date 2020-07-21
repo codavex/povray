@@ -13,7 +13,8 @@ global_settings { assumed_gamma 1.0 }
 
 // The Sun
 light_source {
-  SunPos(year,month,day,hour,minute,0, 51.5,-2.5)*1000
+  //SunPos(year,month,day,hour,minute,0, 51.5,-2.5)*500
+  <500, 500, -500>
   color rgb <1,1,1>
 /*  looks_like {
     sphere {

@@ -6,7 +6,7 @@
 // ==== Standard POV-Ray Includes ====
 #include "colors.inc"	  // Standard Color definitions
 
-#include "../environment.inc"
+#include "environment.inc"
 #include "gravity.inc"
 
 camera {
