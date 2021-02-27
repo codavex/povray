@@ -12,7 +12,7 @@
       texture {
         coin_texture
         normal {
-          bump_map { png "bump_images/heads.png" once interpolate 2 bump_size 2.0 }
+          bump_map { png "bump_images/headsi.png" once interpolate 2 bump_size 5 }
           rotate x*90
           translate <-.5,0,-.5>
           scale <1.34, 1, 1>
@@ -25,7 +25,7 @@
       texture {
         coin_texture
         normal {
-          bump_map { png "bump_images/tails.png" once interpolate 2 bump_size 2.0 }
+          bump_map { png "bump_images/tailsi.png" once interpolate 2 bump_size 5 }
           rotate x*90
           translate <-.5,0,-.5>
           scale <0.015,1,0.015>

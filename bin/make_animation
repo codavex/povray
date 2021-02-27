@@ -1,10 +1,16 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+then
+  echo "Usage: make_animation $frame_rate"
+fi
+
 PROJECT=`basename $PWD`
+FPS=$1
 
 rm ${PROJECT}.mp4
 cat *.png | ffmpeg -i - \
--framerate 24 \
+-framerate $FPS \
 -c:v libx264 -preset slow -x264-params crf=28 \
 ${PROJECT}.mp4
 
