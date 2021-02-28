@@ -1,0 +1,5 @@
+scene.png: scene.pov *.inc *.ini
+	povray scene.ini
+
+clean:
+	rm scene.png
