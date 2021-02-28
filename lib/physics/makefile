@@ -1,0 +1,1 @@
+../../makefiles/makefile.empty.recipe

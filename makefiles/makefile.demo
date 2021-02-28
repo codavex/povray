@@ -1,0 +1,5 @@
+demo.png: demo.pov *.inc *.ini
+	povray demo.ini
+
+clean:
+	rm demo.png
