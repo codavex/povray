@@ -1,1 +1,1 @@
-../../makefiles/makefile.empty.recipe
+../../makefiles/makefile.subprojects
