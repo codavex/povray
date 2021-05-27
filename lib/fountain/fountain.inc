@@ -8,6 +8,7 @@
 #include "glass_old.inc"
 
 #include "physics/gravity/gravity.inc"
+#include "physics/projectile/projectile.inc"
 #include "column/twisted_column.inc"
 #include "coins/coins.inc"
 
@@ -135,6 +136,27 @@
   interior{ I_Glass }
 }
 
+#macro ring_of_splashes(displacement, scaling)
+  #declare shift = 0;
+  #declare circumference = 2*3.14*displacement;
+  object { union {
+  #while (shift < circumference)
+    object {
+      projectile_trajectory(object { droplet scale scaling }, 0, 45, 1.5)
+      rotate y* rand(gravity_rand)*360
+      translate <displacement, 0, 0>
+      rotate y*rand(gravity_rand)*360
+    }
+    #declare shift = shift + 0.01;
+  #end
+  } }
+#end
+
+#declare base_splashes = object {
+  ring_of_splashes(1.33, 1)
+  translate y*0.35
+}
+
 #declare tier1_pillar = object {
   TwistedColumn(.2,1.25,1000)
   texture { T_Grnt16 translate <5*rand(gravity_rand),0,0> }
@@ -172,6 +194,11 @@
   translate y*1.5
   texture { T_Water }
   interior { I_Glass }
+}
+
+#declare tier1_splashes = object {
+  ring_of_splashes(0.67, 1)
+  translate y*1.5
 }
 
 #declare shift = 0;
@@ -223,6 +250,11 @@
   interior { I_Glass }
 }
 
+#declare tier2_splashes = object {
+  ring_of_splashes(0.33, 1)
+  translate y*2.25
+}
+
 #declare shift = 0;
 #declare tier2_falling_water = object { union {
 #while (shift < 720)
@@ -231,6 +263,31 @@
 #end
 } translate y*1.5 }
 
+#declare shift =0;
+#declare fountain_jets = object { union {
+#while (shift < 720)
+  object {
+    projectile_trajectory(
+      object { droplet },
+      .25,
+      78+rand(gravity_rand)*7,
+      2.8+rand(gravity_rand)*.2
+      )
+    rotate <0, shift, 0>
+  }
+  #declare shift = shift + 0.3;
+#end
+} translate y*2.25 }
+
+#declare fountain_spout = object {
+  cone {
+    <0, -.25, 0>, 0.05
+    <0, .25, 0>, 0.025
+  }
+  translate y*2.25
+  texture { T_Grnt16 translate <5*rand(gravity_rand),0,0> }
+}
+
 #declare fountain = object {
   union {
     object { base1 }
@@ -238,15 +295,20 @@
     object { base }
     object { seat }
     object { base_water }
+    object { base_splashes }
     object { tier1_pillar }
     object { tier1_bowl }
     object { tier1_bowl_mosaic }
     object { tier1_bowl_water }
+    object { tier1_splashes }
     object { tier1_falling_water }
     object { tier2_pillar }
     object { tier2_bowl }
     object { tier2_bowl_mosaic }
     object { tier2_bowl_water }
+    object { tier2_splashes }
     object { tier2_falling_water }
+    object { fountain_jets }
+    object { fountain_spout }
   }
 }
